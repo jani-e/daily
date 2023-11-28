@@ -1,0 +1,1 @@
+# Daily activities launcher with Python
