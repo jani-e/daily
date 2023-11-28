@@ -2,19 +2,24 @@ import subprocess
 import webbrowser
 import time
 
-program_paths = [
-    r'C:\Program Files\Mozilla Thunderbird\thunderbird.exe',
-    r'C:\Users\janie\AppData\Local\Discord\Update.exe --processStart Discord.exe'
-]
+def read_program_paths():
+    program_file_paths = []
+    with open('program_paths.txt') as programs:
+        for path in programs:
+            path = path.replace('\n', '')
+            program_file_paths.append(path)
+    return program_file_paths
 
-website_urls = [
-    r'https://www.is.fi',
-    r'https://www.facebook.com',
-    r'https://www.youtube.com',
-    r'https://sahko.tk/'
-]
+def read_browser_urls():
+    browser_urls = []
+    with open('website_urls.txt') as urls:
+        for url in urls:
+            url = url.replace('\n', '')
+            browser_urls.append(url)
+    return browser_urls
 
 def start_programs():
+    program_paths = read_program_paths()
     for path in program_paths:
         try:
             subprocess.Popen(
@@ -28,6 +33,7 @@ def start_programs():
             print(f'Error starting {path}:\n{e}')
 
 def start_browser_with_urls():
+    website_urls = read_browser_urls()
     for url in website_urls:
         try:
             webbrowser.open_new_tab(url)
@@ -50,7 +56,6 @@ def user_inputs():
             start_programs()
         elif command == '2':
             start_browser_with_urls()
-            input('over')
 
 def close_program():
     t = 5

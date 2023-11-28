@@ -1,0 +1,2 @@
+C:\Program Files\Mozilla Thunderbird\thunderbird.exe
+%LOCALAPPDATA%\Discord\Update.exe --processStart Discord.exe
